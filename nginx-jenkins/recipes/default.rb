@@ -23,7 +23,6 @@ template "#{node[:nginx][:dir]}/nginx.conf" do
 	owner "root"
 	group "root"
 	mode 0644
-	notifiles :reload, "service[nginx]"
 end
 
 template "#{node[:nginx][:dir]}/conf.d/jenkins.conf" do
@@ -31,5 +30,4 @@ template "#{node[:nginx][:dir]}/conf.d/jenkins.conf" do
 	owner "root"
 	group "root"
 	mode 0644
-	notifiles :reload, "service[nginx]"
 end
