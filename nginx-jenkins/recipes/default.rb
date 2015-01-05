@@ -14,6 +14,10 @@ directory node[:nginx][:log_dir] do
   action :create
 end
 
+service "nginx" do
+	supports status: true, restart: true, reload:true
+	action [:enable, :start]
+end
 template "#{node[:nginx][:dir]}/nginx.conf" do
 	source "nginx.conf.erb"
 	owner "root"
@@ -28,9 +32,4 @@ template "#{node[:nginx][:dir]}/conf.d/jenkins.conf" do
 	group "root"
 	mode 0644
 	notifiles :reload, "service[nginx]"
-end
-
-service "nginx" do
-	supports status: true, restart: true, reload:true
-	action [:enable, :start]
 end
