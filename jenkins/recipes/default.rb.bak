@@ -10,13 +10,6 @@ end
 package "jenkins" do
   action :install
 end
-
-template "/etc/sysconfig/jenkins" do
-        source "jenkins.erb"
-        owner "root"
-        group "root"
-        mode 0600
-end
  
 service "jenkins" do
   action [:enable, :start]
