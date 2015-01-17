@@ -15,19 +15,20 @@ directory node[:nginx][:log_dir] do
 end
 
 service "nginx" do
-	supports　:status => true, :restart => true, :reload => true
-	action [:enable, :start]
+   supports :status => true, :restart => true, :reload => true
+   action [:enable, :start]
 end
+
 template "#{node[:nginx][:dir]}/nginx.conf" do
-	source "nginx.conf.erb"
-	owner "root"
-	group "root"
-	mode 0644
+  source "nginx.conf.erb"
+  owner "root"
+  group "root"
+  mode 0644
 end
 
 template "#{node[:nginx][:dir]}/conf.d/jenkins.conf" do
-	source "jenkins-site.erb"
-	owner "root"
-	group "root"
-	mode 0644
+  source "jenkins-site.erb"
+  owner "root"
+  group "root"
+  mode 0644
 end
