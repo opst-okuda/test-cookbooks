@@ -15,7 +15,7 @@ directory node[:nginx][:log_dir] do
 end
 
 service "nginx" do
-	supports status: true, restart: true, reload:true
+	supports: status => true, :restart => true, :reload => true
 	action [:enable, :start]
 end
 template "#{node[:nginx][:dir]}/nginx.conf" do
