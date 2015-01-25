@@ -1,5 +1,6 @@
 package "nginx" do
 	action :install
+	notifies :reloead, "service[jenkins]", :delayed
 end
 
 directory node[:nginx][:dir] do
