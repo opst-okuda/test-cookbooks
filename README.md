@@ -24,3 +24,5 @@ Webhook test2
 
 Update test1
 Update test2
+
+- release test
